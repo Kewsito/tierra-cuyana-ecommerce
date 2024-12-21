@@ -5,43 +5,37 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class InterfazGrafica {
     private Controlador controlador;
-
+    
     public InterfazGrafica(Controlador controlador) {
         this.controlador = controlador;
 
         JFrame frame = new JFrame("Tienda en Línea");
         frame.setSize(1280, 720);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        //PANEL PRINCIPAL
-        JPanel MainPanel = new JPanel();
-        MainPanel.setLayout(new BoxLayout(MainPanel,BoxLayout.Y_AXIS));
-        
-        //SECCION VER PRODUCTOS
-        JPanel verProductosSeccion = new JPanel();
-        verProductosSeccion.setLayout(new GridLayout(3,2)); //3 FILAS 2 COLUMNAS
-        
-        JLabel nombreLabel = new JLabel("Nombre del Producto:");
-        JTextField nombreField = new JTextField(20);
-        JLabel precioLabel = new JLabel("Precio del Producto:");
-        JTextField precioField = new JTextField(20);
 
-        verProductosSeccion.add(nombreLabel);
-        verProductosSeccion.add(nombreField);
-        verProductosSeccion.add(precioLabel);
-        verProductosSeccion.add(precioField);
-        
-        //BOTON DE VER PRODUCTOS
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+
+        // Crear un JTabbedPane para las pestañas
+        JTabbedPane tabbedPane = new JTabbedPane();
+
+        // Crear el panel para la pestaña de productos
+        JPanel productosPanel = new JPanel();
+        productosPanel.setLayout(new BorderLayout());
+
+        // Crear un panel para los botones dentro de la pestaña de productos
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout());
+
+        // Botón de ver productos
         JButton verProductosButton = new JButton("Ver Productos");
-        MainPanel.add(verProductosButton);
-        frame.add(MainPanel);
+        buttonPanel.add(verProductosButton);
 
         verProductosButton.addActionListener(new ActionListener() {
             @Override
@@ -54,24 +48,30 @@ public class InterfazGrafica {
                 }
             }
         });
-        
-        //BOTON DE AGREGAR PRODUCTO
+
+        // Botón de agregar producto
         JButton agregarProductoButton = new JButton("Agregar Producto");
-        MainPanel.add(agregarProductoButton);
-        frame.add(MainPanel);
-        
+        buttonPanel.add(agregarProductoButton);
+
         agregarProductoButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 controlador.agregarProducto();
             }
         });
-        
-        
-        
 
+        // Agregar el panel de botones al panel de productos
+        productosPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        // Agregar el panel de productos al tabbedPane
+        tabbedPane.addTab("Productos", productosPanel);
+
+        // Agregar el tabbedPane al mainPanel
+        mainPanel.add(tabbedPane, BorderLayout.CENTER);
+
+        frame.add(mainPanel);
         frame.setVisible(true);
     }
 
-   
+    
 }

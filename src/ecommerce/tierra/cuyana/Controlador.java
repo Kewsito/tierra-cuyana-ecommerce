@@ -22,14 +22,13 @@ public class Controlador {
     }
 
     void verProductos() throws SQLException {
-        //consulta a la base de datos
         List<Productos> productos = base.mostrarProductos();
-        
-        //Mostrar los productos en la vista (puedes pasar los productos como argumento)
-        JOptionPane.showMessageDialog(null,"Productos: "+ productos.toString());
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sb = new StringBuilder("Lista de todos los productos:\n");
+        for (Productos producto : productos) {
+            sb.append(producto.toString()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, sb.toString());
     }
-    
 
     void agregarProducto() {
         
