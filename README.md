@@ -1,7 +1,7 @@
 "# tierra-cuyana-ecommerce" 
 ## English
 
-Welcome to the Tierra Cuyana E-commerce project. This repository contains the source code for an e-commerce platform designed to provide a seamless shopping experience.
+Welcome to the Tierra Cuyana E-commerce project. This repository contains the source code for an e-commerce platform designed to provide a seamless shopping experience. This project is created using NetBeans, Java, and uses a MySQL database.
 
 ### Features
 - User authentication and authorization
@@ -15,18 +15,10 @@ Welcome to the Tierra Cuyana E-commerce project. This repository contains the so
     ```bash
     git clone https://github.com/yourusername/tierra-cuyana-ecommerce.git
     ```
-2. Navigate to the project directory:
-    ```bash
-    cd tierra-cuyana-ecommerce
-    ```
-3. Install dependencies:
-    ```bash
-    npm install
-    ```
-4. Start the development server:
-    ```bash
-    npm start
-    ```
+2. Open the project in NetBeans.
+3. Set up the MySQL database and update the database configuration in the project.
+4. Build the project in NetBeans.
+5. Start the application from NetBeans.
 
 ### Contributing
 We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) for more details.
